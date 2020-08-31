@@ -10,7 +10,7 @@ var tempSize;
 var tempVelX;
 var tempVelY;
 var bodies = []
-var gravityConstant = 5;
+var gravityConstant = 20;
 function normalize(pos){
   var length = Math.sqrt(pos.x*pos.x+pos.y*pos.y);
   pos.x = pos.x/length; //assigning new value to x (dividing x by length of the vector)
@@ -63,7 +63,7 @@ function draw(){
     for (let y =  bodies.length - 1; y >= 0; y--){
       if (y != x){
         try{
-          if (distance(bodies[x].pos.x, bodies[x].pos.y, bodies[y].pos.x, bodies[y].pos.y) < bodies[x].size){
+          if (distance(bodies[x].pos.x, bodies[x].pos.y, bodies[y].pos.x, bodies[y].pos.y) < bodies[x].size/2 + bodies[y].size/2){
             if (bodies[x].size >= bodies[y].size){
               bodies[x].size += bodies[y].size;
               bodies.splice(y, 1);
